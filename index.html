@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title></title>
+</head>
+<body>
+  <button>Pushstate And Back</button>
+  <img src="https://unsplash.it/1500/600?random" alt="">
+  <img src="https://unsplash.it/1500/601?random" alt="">
+  <img src="https://unsplash.it/1500/602?random" alt="">
+  <img src="https://unsplash.it/1500/603?random" alt="">
+  <img src="https://unsplash.it/1500/604?random" alt="">
+ <script>
+  window.addEventListener('popstate', function(){alert('popstate fired')});
+  document.querySelector('button').addEventListener('click', function () {
+    history.pushState({}, 'page pushed manually', '/foo');
+    history.back()
+  });
+ </script>
+</body>
+</html>
