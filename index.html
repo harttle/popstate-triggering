@@ -6,17 +6,26 @@
   <title></title>
 </head>
 <body>
-  <button>Pushstate And Back</button>
-  <img src="https://unsplash.it/1500/600?random" alt="">
-  <img src="https://unsplash.it/1500/601?random" alt="">
-  <img src="https://unsplash.it/1500/602?random" alt="">
-  <img src="https://unsplash.it/1500/603?random" alt="">
-  <img src="https://unsplash.it/1500/604?random" alt="">
+  <button class="btn-push">Pushstate And Back</button>
+  <button class="btn-append">Append Random Image</button>
+  <section class="images">
+    <img src="https://unsplash.it/1500/600?random=1" alt="">
+    <img src="https://unsplash.it/1500/600?random=2" alt="">
+    <img src="https://unsplash.it/1500/600?random=3" alt="">
+  </section>
  <script>
+  var offset = 1000;
+  var list = document.querySelector('section.images');
   window.addEventListener('popstate', function(){alert('popstate fired')});
-  document.querySelector('button').addEventListener('click', function () {
+  document.querySelector('.btn-push').addEventListener('click', function () {
     history.pushState({}, 'page pushed manually', '/foo');
     history.back()
+  });
+  document.querySelector('.btn-append').addEventListener('click', function () {
+    var img = document.createElement('img');
+    img.src = 'https://unsplash.it/1500/600?random=' + offset;
+    list.prepend(img);
+    offset++;
   });
  </script>
 </body>
